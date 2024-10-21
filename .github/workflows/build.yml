@@ -24,6 +24,6 @@ jobs:
     - name: ImPaaS-Deploy
       uses: /impaas/impaas-deploy@v3
       with:
-        app-name: mm1121-sse-app
+        app-name: mm1121-sse-app-l2
         deployment-token: ${{ secrets.IMPAAS_DEPLOY_TOKEN }}
         method: PLATFORM
