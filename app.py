@@ -25,4 +25,6 @@ def get_query():
 def process_query(str):
     if str == "dinosaurs":
         return "Dinosaurs ruled the Earth 200 million years ago"
+    if str == "token":
+        return "We fixed the silly token"
     return "Unknown"
