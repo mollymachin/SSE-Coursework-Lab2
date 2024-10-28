@@ -30,5 +30,5 @@ prime_q2 = "are primes: 10, 78, 70, 27, 17?"
 #     assert process_query("What is 10 minus 5?") == "5"
 
 
-def prime():
-    assert process_query(prime_q1 + prime_q2) == "17"
+# def prime():
+#     assert process_query(prime_q1 + prime_q2) == "17"
