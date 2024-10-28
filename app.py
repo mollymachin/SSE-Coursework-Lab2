@@ -33,5 +33,6 @@ def process_query(strg):
     if "plus" in strg:
         aaa = int(re.findall(r'\d+', strg).group())
         return str( aaa[0] + aaa[1] )
+    if 
         
     return "Unknown"
