@@ -14,8 +14,8 @@ jobs:
       run: pip install flake8
     - name: Run flake8
       run: flake8 .
-      
-  tests:
+
+  python-tests:
 		runs-on: ubuntu-latest
 		steps:
 			- name: Checkout
