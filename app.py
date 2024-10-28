@@ -47,5 +47,3 @@ def process_query(strg):
                 if math.cbrt(int(n))**3 == int(n):
                     return n
     return "Unknown"
-
-
