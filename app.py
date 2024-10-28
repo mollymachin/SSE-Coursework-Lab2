@@ -44,6 +44,6 @@ def process_query(strg):
         aaa = re.findall(r'\d+', strg)
         for n in aaa:
             if math.isqrt(int(n)):
-                if ((int(n))**(1/3)).is_integer():
+                if abs((float(n))**(1/3)%1) < 0.01 :
                     return n
     return "Unknown"
