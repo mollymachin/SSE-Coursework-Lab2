@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 import re
+import math
 app = Flask(__name__)
 
 
@@ -36,4 +37,13 @@ def process_query(strg):
     if "largest" in strg:
         aaa = re.findall(r'\d+', strg)
         return str(max(map(int, aaa)))
+    if "multiplied" in strg:
+        aaa = re.findall(r'\d+', strg)
+        return str(int(aaa[0]) + int(aaa[1]))
+    if "square" in strg:
+        aaa = re.findall(r'\d+', strg)
+        for n in aaa:
+            if int(math.sqrt(n)) == float(math.sqrt(n)):
+                if int(n**(1/3)) == float(n**(1/3)):
+                    return str(n)
     return "Unknown"
