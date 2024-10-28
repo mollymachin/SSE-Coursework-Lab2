@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request
+import re
 app = Flask(__name__)
 
 
@@ -22,11 +23,15 @@ def get_query():
     return process_query(query)
 
 
-def process_query(str):
-    if str == "dinosaurs":
+def process_query(strg):
+    if strg == "dinosaurs":
         return "Dinosaurs ruled the Earth 200 million years ago"
-    if str == "token":
+    if strg == "token":
         return "We fixed the silly token"
-    if "name" in str:
+    if "name" in strg:
         return "Molly"
+    if "plus" in strg:
+        aaa = int(re.findall(r'\d+', strg).group())
+        return str( aaa[0] + aaa[1] )
+        
     return "Unknown"
