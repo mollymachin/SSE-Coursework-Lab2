@@ -7,9 +7,9 @@ prime_q1 = "Which of the following numbers"
 prime_q2 = "are primes: 10, 78, 70, 27, 17?"
 
 
-# def test_query_about_dinosaurs_returns_historical_fact():
-#     input = "Which of the following numbers is the largest: 31, 48, 7?"
-#     assert process_query(input) == "48"
+def test_query_about_dinosaurs_returns_historical_fact():
+    input = "Which of the following numbers is the largest: 31, 48, 7?"
+    assert process_query(input) == "48"
 
 
 # def test_query_about_anything_that_isnt_dinosaurs_returns_empty_string():
