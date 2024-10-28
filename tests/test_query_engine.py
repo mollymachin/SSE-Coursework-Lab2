@@ -22,3 +22,7 @@ def test_about_cubes():
     assert process_query(
         square_var + cube_var
         ) == "64"
+
+
+def test_minus():
+    assert process_query("What is 10 minus 5?") == "5"
