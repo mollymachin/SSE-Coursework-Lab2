@@ -33,7 +33,7 @@ def process_query(strg):
         return "Molly"
     if "plus" in strg:
         aaa = re.findall(r'\d+', strg)
-        return str(int(aaa[0]) + int(aaa[1]))
+        return str(sum(map(int, aaa)))
     if "largest" in strg:
         aaa = re.findall(r'\d+', strg)
         return str(max(map(int, aaa)))
