@@ -27,3 +27,18 @@ jobs:
         app-name: mm1121-sse-app-l2
         deployment-token: ${{ secrets.IMPAAS_DEPLOY_TOKEN }}
         method: PLATFORM
+  
+  test-questions:
+    needs: deploy-to-impaas
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.12
+    - name: Install pytest
+      run: pip install pytest
+    - name: Run pytest
+      run: pytest tests/
