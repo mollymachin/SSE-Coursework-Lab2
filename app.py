@@ -42,11 +42,26 @@ def process_query(strg):
         return str(int(aaa[0]) * int(aaa[1]))
     if "square" in strg:
         aaa = re.findall(r'\d+', strg)
+        bbb = []
         for n in aaa:
             if math.isqrt(int(n)):
-                if abs((float(n))**(1/3)%1) < 0.01 :
-                    return n
+                if abs((float(n))**(1/3) % 1) < 0.01:
+                    bbb.append()
+        return bbb
     if "minus" in strg:
         aaa = re.findall(r'\d+', strg)
         return str(int(aaa[0]) - int(aaa[1]))
+    if "minus" in strg:
+        aaa = re.findall(r'\d+', strg)
+        bbb = []
+        for n in map(int, aaa):
+            is_prime = False
+            if n == 2 or n == 3:
+                is_prime = True
+            for i in range(math.sqrt(n)):
+                if n % i == 0:
+                    is_prime = True
+            if is_prime:
+                bbb.append(n)
+        return bbb
     return "Unknown"
