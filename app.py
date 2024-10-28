@@ -35,5 +35,5 @@ def process_query(strg):
         return str(int(aaa[0]) + int(aaa[1]))
     if "largest" in strg:
         aaa = re.findall(r'\d+', strg)
-        return str(max(map(int,aaa)))
+        return str(max(map(int, aaa)))
     return "Unknown"
