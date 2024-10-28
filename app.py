@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 import re
+import math
 app = Flask(__name__)
 
 
@@ -42,7 +43,7 @@ def process_query(strg):
     if "square" in strg:
         aaa = re.findall(r'\d+', strg)
         for n in aaa:
-            if int(n)**(1/2) % 1 == 0:
-                if int(n)**(1/3) % 1 == 0:
+            if math.isqrt(int(n)):
+                if math.cbrt(int(n))**3 == int(n):
                     return n
     return "Unknown"
