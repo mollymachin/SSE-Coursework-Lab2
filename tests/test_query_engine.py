@@ -26,3 +26,7 @@ def test_about_cubes():
 
 def test_minus():
     assert process_query("What is 10 minus 5?") == "5"
+
+
+def prime():
+    assert process_query("Which of the following numbers are primes: 10, 78, 70, 27, 17?") == "17"
