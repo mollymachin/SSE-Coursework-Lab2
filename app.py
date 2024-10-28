@@ -45,5 +45,5 @@ def process_query(strg):
         for n in aaa:
             if int(math.sqrt(n)) == float(math.sqrt(n)):
                 if int(n**(1/3)) == float(n**(1/3)):
-                    return str(int(aaa[0]) + int(aaa[1]))
+                    return str(n)
     return "Unknown"
