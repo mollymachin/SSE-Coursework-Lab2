@@ -46,7 +46,7 @@ def process_query(strg):
         for n in aaa:
             if math.isqrt(int(n)):
                 if abs((float(n))**(1/3) % 1) < 0.01:
-                    bbb.append()
+                    bbb.append(n)
         return bbb
     if "minus" in strg:
         aaa = re.findall(r'\d+', strg)
@@ -62,6 +62,6 @@ def process_query(strg):
                 if n % i == 0:
                     is_prime = True
             if is_prime:
-                bbb.append(n)
+                bbb.append(str(n))
         return bbb
     return "Unknown"
