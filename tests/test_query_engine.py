@@ -1,6 +1,6 @@
 from app import process_query
 
-var = "What is 21 plus 67?"
+var = "What is 21 multiplied by 67?"
 square_var = "Which of the following numbers is both "
 cube_var = "a square and a cube: 64, 81, 100, 121?"
 prime_q1 = "Which of the following numbers"
