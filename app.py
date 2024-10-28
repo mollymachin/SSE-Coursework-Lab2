@@ -39,7 +39,7 @@ def process_query(strg):
         return str(max(map(int, aaa)))
     if "multiplied" in strg:
         aaa = re.findall(r'\d+', strg)
-        return str(int(aaa[0]) + int(aaa[1]))
+        return str(int(aaa[0]) * int(aaa[1]))
     if "square" in strg:
         aaa = re.findall(r'\d+', strg)
         for n in aaa:
