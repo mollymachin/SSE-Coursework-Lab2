@@ -30,11 +30,4 @@ def process_query(strg):
         return "We fixed the silly token"
     if "name" in strg:
         return "Molly"
-    if "plus" in strg:
-        aaa = int(re.findall(r'\d+', strg).group())
-        return str( aaa[0] + aaa[1] )
-    if "largest" in strg:
-        aaa = int(re.findall(r'\d+', strg).group())
-        return max(aaa)
-        
     return "Unknown"
