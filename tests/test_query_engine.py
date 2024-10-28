@@ -7,4 +7,4 @@ def test_query_about_dinosaurs_returns_historical_fact():
 
 
 def test_query_about_anything_that_isnt_dinosaurs_returns_empty_string():
-    assert process_query("imperial college") == "Unknown"
+    assert process_query("What is 50 plus 72?") == "Unknown"
