@@ -51,6 +51,9 @@ def process_query(strg):
     if "minus" in strg:
         aaa = re.findall(r'\d+', strg)
         return str(int(aaa[0]) - int(aaa[1]))
+    if "power" in strg:
+        aaa = re.findall(r'\d+', strg)
+        return str(int(aaa[0])**int(aaa[1]))
     if "prime" in strg:
         aaa = re.findall(r'\d+', strg)
         bbb = []
