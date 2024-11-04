@@ -75,10 +75,13 @@ def process_query(strg):
 def username():
     input_username = request.form.get("username")
     input_repos = []
-    response = requests.get(f'https://api.github.com/users/{input_username}/repos')
+    response = requests.get(
+        f'https://api.github.com/users/{input_username}/repos'
+        )
     if response.status_code == 200:
-        repos = response.json() # data returned is a list of ‘repository’ entities
+        repos = response.json()  # returns list of repos
         for repo in repos:
             input_repos.append(repo[input_username])
-    return render_template("username.html", username=input_username, repos=input_repos)
-
+    return render_template(
+        "username.html", username=input_username, repos=input_repos
+        )
