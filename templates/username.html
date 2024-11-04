@@ -1,14 +1,14 @@
 <body>
     <h1>Session 5!</h1>
     <h1>Hello {{ username }}!</h1>
-    <ul>{% for repo in repos %}
+    <ul>{% for output_json in output_jsons %}
 
         <li>
-            <a href="{{repo.html_url}}"> {{repo.full_name}} </a> last updated on {{repo.updated_at}}
+            <a href="{{output_json.html_url}}"> {{output_json.full_name}} </a> last updated on {{output_json.updated_at}}
             <ul>
-                <li>Commit hash = {{repo.commits_url}}</li>
-                <li>Author = {{repo.commits_url}}</li>
-                <li>Commit message = {{repo.commits_url}}</li>
+                <li>Commit hash = {{output_json.sha}}</li>
+                <li>Author = {{output_json.author}}</li>
+                <li>Commit message = {{output_json.message}}</li>
             </ul>
         </li>
 

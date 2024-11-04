@@ -2,6 +2,7 @@ from flask import Flask, render_template, request
 import re
 import requests
 import math
+import json
 app = Flask(__name__)
 
 
@@ -80,7 +81,15 @@ def username():
     )
 
     if response.status_code == 200:
-        repos = response.json()  # returns list of repos
+        repos = response.json() # returns list of repos
+    else:
+        return render_template(
+            "username.html",
+            username=input_username,
+            output_jsons=[]
+        )
+        
+    commits = []
 
     for repo in repos:
         url:str = repo["commits_url"]
@@ -88,10 +97,30 @@ def username():
             url[:-6]
         )
         if commit_response.status_code == 200:
-            commit = commit_response.json()
+            commits.append(commit_response.json())
+        else:
+            return render_template(
+                "username.html",
+                username=input_username,
+                output_jsons=[]
+            )
+
+    output_dicts = []
+
+    for i in range(len(repos)):
+        output_dicts.append({"full_name": repos[i]["full_name"]})
+        output_dicts[i]["html_url"] = repos[i]["html_url"]
+        output_dicts[i]["updated_at"] = repos[i]["updated_at"]
+
+        try: 
+            output_dicts[i]["sha"] = commits[i][0]["sha"]
+            output_dicts[i]["author"] = commits[i][0]["commit"]["author"]["name"]
+            output_dicts[i]["message"] = commits[i][0]["commit"]["message"]
+        except:
+            print("oh no!")
 
     return render_template(
         "username.html",
         username=input_username,
-        repos=repos
+        output_jsons=output_dicts
     )
