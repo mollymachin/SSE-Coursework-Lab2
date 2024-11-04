@@ -28,3 +28,10 @@ def process_query(str):
     if str == "token":
         return "We fixed the silly token"
     return "Unknown"
+
+
+@app.route("/username", methods=["POST"])
+def submit():
+    input_name = request.form.get("username")
+    return render_template("username.html", username=input_name)
+
