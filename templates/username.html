@@ -3,7 +3,14 @@
     <h1>Hello {{ username }}!</h1>
     <ul>{% for repo in repos %}
 
-        <li>{{repo}}</li>
+        <li>
+            {{repo.full_name}} last updated on {{repo.updated_at}}
+            <ul>
+                <li>Commit hash = {{repo.commits_url.0.sha}}</li>
+                <li>Author = {{repo.commits_url.0.commit.author.name}}</li>
+                <li>Commit message = {{repo.commits_url.0.commit.message}}</li>
+            </ul>
+        </li>
 
         {% endfor %}
     </ul>
