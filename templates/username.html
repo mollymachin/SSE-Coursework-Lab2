@@ -4,11 +4,11 @@
     <ul>{% for repo in repos %}
 
         <li>
-            {{repo.full_name}} last updated on {{repo.updated_at}}
+            <a href="{{repo.html_url}}"> {{repo.full_name}} </a> last updated on {{repo.updated_at}}
             <ul>
-                <li>Commit hash = {{repo.commits_url.0.sha}}</li>
-                <li>Author = {{repo.commits_url.0.commit.author.name}}</li>
-                <li>Commit message = {{repo.commits_url.0.commit.message}}</li>
+                <li>Commit hash = {{repo.commits_url}}</li>
+                <li>Author = {{repo.commits_url}}</li>
+                <li>Commit message = {{repo.commits_url}}</li>
             </ul>
         </li>
 
