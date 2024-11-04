@@ -1,5 +1,10 @@
 <body>
     <h1>Session 5!</h1>
     <h1>Hello {{ username }}!</h1>
-    <p>Repos : {{ repos }}</p>
+    <ul>{% for repo in repos %}
+
+        <li>{{repo}}</li>
+
+        {% endfor %}
+    </ul>
 </body>
