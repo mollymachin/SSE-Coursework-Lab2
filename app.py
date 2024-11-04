@@ -81,7 +81,7 @@ def username():
     if response.status_code == 200:
         repos = response.json()  # returns list of repos
         for repo in repos:
-            input_repos.append(repo[input_username])
+            input_repos.append(repo[f'{input_username}'])
     return render_template(
         "username.html", username=input_username, repos=input_repos
         )
