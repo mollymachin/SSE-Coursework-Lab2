@@ -1,6 +1,6 @@
 name: Build
 on: [push]
-jobs:
+jobs: 
   python-formatting:
     runs-on: ubuntu-latest
     steps:
@@ -15,8 +15,25 @@ jobs:
     - name: Run flake8
       run: flake8 .
 
-  deploy-to-impaas:
+  test-questions:
     needs: python-formatting
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.12
+    - name: Install dependencies
+      run: |
+        pip install pytest
+        pip install flask
+    - name: Run pytest
+      run: pytest tests/
+
+  deploy-to-impaas:
+    needs: test-questions
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
