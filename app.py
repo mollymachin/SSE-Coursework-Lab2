@@ -71,7 +71,6 @@ def process_query(strg):
 
 
 @app.route("/username", methods=["POST"])
-def submit():
+def username():
     input_name = request.form.get("username")
     return render_template("username.html", username=input_name)
-
