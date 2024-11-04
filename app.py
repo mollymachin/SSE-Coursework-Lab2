@@ -77,22 +77,21 @@ def username():
 
     response = requests.get(
         f'https://api.github.com/users/{input_username}/repos'
-        )
+    )
 
     if response.status_code == 200:
         repos = response.json()  # returns list of repos
 
     for repo in repos:
+        url:str = repo["commits_url"]
         commit_response = requests.get(
-            repo.commits_url
+            url[:-6]
         )
         if commit_response.status_code == 200:
             commit = commit_response.json()
-
-        print(commit[0].sha)
 
     return render_template(
         "username.html",
         username=input_username,
         repos=repos
-        )
+    )
