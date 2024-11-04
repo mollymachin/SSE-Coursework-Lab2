@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 import re
+import requests
 import math
 app = Flask(__name__)
 
@@ -73,4 +74,11 @@ def process_query(strg):
 @app.route("/username", methods=["POST"])
 def username():
     input_username = request.form.get("username")
-    return render_template("username.html", username=input_username)
+    input_repos = []
+    response = requests.get(f'https://api.github.com/users/{input_username}/repos')
+    if response.status_code == 200:
+        repos = response.json() # data returned is a list of ‘repository’ entities
+        for repo in repos:
+            input_repos.append(repo[input_username])
+    return render_template("username.html", username=input_username, repos=input_repos)
+
