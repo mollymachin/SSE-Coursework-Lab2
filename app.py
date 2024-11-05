@@ -82,6 +82,7 @@ def username():
     if response.status_code == 200:
         repos = response.json()  # returns list of repos
     else:
+        print("Error fetching repos")
         return render_template(
             "username.html",
             username=input_username,
@@ -98,25 +99,27 @@ def username():
         if commit_response.status_code == 200:
             commits.append(commit_response.json())
         else:
-            return render_template(
-                "username.html",
-                username=input_username,
-                output_jsons=[]
-            )
+            print("Error fetching commits")
+            # return render_template(
+            #    "username.html",
+            #    username=input_username,
+            #    output_jsons=[]
+            # )
 
     o_dicts = []
 
     for i in range(len(repos)):
-        o_dicts.append({"full_name": repos[i]["full_name"]})
-        o_dicts[i]["html_url"] = repos[i]["html_url"]
-        o_dicts[i]["updated_at"] = repos[i]["updated_at"]
-
         try:
+            o_dicts.append({"full_name": repos[i]["full_name"]})
+            o_dicts[i]["html_url"] = repos[i]["html_url"]
+            o_dicts[i]["updated_at"] = repos[i]["updated_at"]
             o_dicts[i]["sha"] = commits[i][0]["sha"]
             o_dicts[i]["author"] = commits[i][0]["commit"]["author"]["name"]
             o_dicts[i]["message"] = commits[i][0]["commit"]["message"]
         except RuntimeError:
-            print("oh no!")
+            print("Error accessing commit json")
+        except IndexError:
+            print("OOB error !")
 
     return render_template(
         "username.html",
